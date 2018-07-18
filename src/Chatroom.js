@@ -1,17 +1,11 @@
-import { IMessage, IAuthor, IRole } from './Types';
-import { getNextMessageId, loadMessages, mountMessages, addMessage, requestResponse } from './Functions';
-import { authors, messages, roles } from './Data';
-
-declare let $:any;
-
-let messageElements:string[] = [];
+let messageElements = [];
 
 $(function() {
 
     let messageDomNode = '#Messages';
     let inputDomNode = '#ChatroomPromptInput';
 
-    mountMessages(messageDomNode, loadMessages(messages, authors, roles));
+    mountMessages(messageDomNode, loadMessages(messages, authors));
 
     $('#btnSend').click(()=>{
         sendMessage(inputDomNode, messageDomNode, messages);
@@ -25,19 +19,19 @@ $(function() {
 });
 
 
-function sendMessage(inputDomNode:string, messageDomNode:string, messages:IMessage[]){
+function sendMessage(inputDomNode, messageDomNode, messages){
 
     let id = getNextMessageId(messages);
 
     addMessage(messages, $(inputDomNode).val(), id, 0);
 
-    mountMessages(messageDomNode, loadMessages(messages, authors, roles));
+    mountMessages(messageDomNode, loadMessages(messages, authors));
     
     $(inputDomNode).val('');
 
     setTimeout(()=>{
         let newId = getNextMessageId(messages);
         addMessage(messages, requestResponse(id), newId, 1); 
-        mountMessages(messageDomNode, loadMessages(messages, authors, roles))
+        mountMessages(messageDomNode, loadMessages(messages, authors))
     }, 2000);
 }

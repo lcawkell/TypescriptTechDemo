@@ -1,6 +1,4 @@
-import { IMessage, IAuthor, IRole } from './Types';
-
-export let roles:IRole[] = [
+window['roles'] = [
     {
         id: 0,
         name: 'Administrator'
@@ -11,7 +9,7 @@ export let roles:IRole[] = [
     }
 ]
 
-export let authors:IAuthor[] = [
+window['authors'] = [
     {
         id: 0,
         name: 'Lucas Cawkell',
@@ -24,6 +22,6 @@ export let authors:IAuthor[] = [
     }
 ]
 
-export let messages:IMessage[] = [
+window['messages'] = [
 
 ];

@@ -4,7 +4,9 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        Chatroom: './src/Chatroom.tsx'
+        Chatroom: './src/Chatroom.js',
+        Data: './src/Data.js',
+        Functions: './src/Functions.js'
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"]
@@ -21,7 +23,7 @@ module.exports = {
             // babel-loader for pure javascript (es6) => javascript (es5)
             {
                 test: /\.(jsx?)$/,
-                loaders: ['babel'],
+                loaders: ['babel-loader'],
                 exclude: [/node_modules/,nodeModulesPath]
             },
             {

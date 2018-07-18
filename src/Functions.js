@@ -1,34 +1,25 @@
-import { IMessage, IAuthor, IRole } from './Types';
-
-declare let $:any;
-
-export function getNextMessageId(messages:IMessage[]) :number {
+window['getNextMessageId'] = function getNextMessageId(messages) {
     return messages.length > 0 ? messages[messages.length-1].id+1 : 0;
 }
 
-function findAuthorById(authors:IAuthor[], id:number){
+window['findAuthorById'] = function findAuthorById(authors, id){
     return authors.filter(author => author.id === id)[0];
 }
 
-export function mountMessages(domNode:string, messages:string[]):void {
+window['mountMessages'] = function mountMessages(domNode, messages) {
     $(domNode).html(messages.join(''));
 }
 
-export function loadMessages(messages:IMessage[], authors:IAuthor[], roles:IRole[]):string[] {
+window['loadMessages'] = function loadMessages(messages, authors) {
     return messages.map(message => {
 
         let author = findAuthorById(authors,message.authorId);
-        let role = findRoleById(roles, author.roleId);
 
-        return `<li><span class='message'><strong>${author.name} (${role.name})</strong>: ${message.message}</span></li>`
+        return `<li><span class='message'><strong>${author.name}</strong>: ${message.message}</span></li>`
     });
 }
 
-function findRoleById(roles:IRole[], roleId:number){
-    return roles.filter(role => role.id === roleId)[0];
-}
-
-export function addMessage(messages:IMessage[], message:string, id:number, authorId:number) {
+window['addMessage'] = function addMessage(messages, message, id, authorId) {
     messages.push({
         id: id,
         message: message,
@@ -37,7 +28,7 @@ export function addMessage(messages:IMessage[], message:string, id:number, autho
     });
 }
 
-export function requestResponse(messageId) :string {
+window['requestResponse'] = function requestResponse(messageId) {
     let num = Math.floor(Math.random() * 3);
 
     switch(messageId) {
