@@ -13,5 +13,5 @@ export interface IAuthor {
 
 export interface IRole {
     id: number,
-    role: string
+    name: string
 }

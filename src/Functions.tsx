@@ -14,17 +14,18 @@ export function mountMessages(domNode:string, messages:string[]):void {
     $(domNode).html(messages.join(''));
 }
 
-export function loadMessages(messages:IMessage[], authors:IAuthor[]):string[] {
+export function loadMessages(messages:IMessage[], authors:IAuthor[], roles:IRole[]):string[] {
     return messages.map(message => {
 
         let author = findAuthorById(authors,message.authorId);
+        let role = findRoleById(roles, author.roleId);
 
-        return `<li><span class='message'><strong>${author.name} (${author.roleId})</strong>: ${message.message}</span></li>`
+        return `<li><span class='message'><strong>${author.name} (${role.name})</strong>: ${message.message}</span></li>`
     });
 }
 
-function findRoleById(roles:IRole, roleId:number){
-    
+function findRoleById(roles:IRole[], roleId:number){
+    return roles.filter(role => role.id === roleId)[0];
 }
 
 export function addMessage(messages:IMessage[], message:string, id:number, authorId:number) {

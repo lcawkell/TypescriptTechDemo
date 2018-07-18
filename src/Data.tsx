@@ -3,7 +3,11 @@ import { IMessage, IAuthor, IRole } from './Types';
 export let roles:IRole[] = [
     {
         id: 0,
-        role: 'Administrator'
+        name: 'Administrator'
+    },
+    {
+        id: 1,
+        name: 'User'
     }
 ]
 
@@ -16,7 +20,7 @@ export let authors:IAuthor[] = [
     {
         id: 1,
         name: 'Dan Randy',
-        roleId: 0
+        roleId: 1
     }
 ]
 
