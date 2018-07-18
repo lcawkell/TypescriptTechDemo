@@ -15,7 +15,16 @@ export function mountMessages(domNode:string, messages:string[]):void {
 }
 
 export function loadMessages(messages:IMessage[], authors:IAuthor[]):string[] {
-    return messages.map(message => `<li><span class='message'><strong>${findAuthorById(authors,message.authorId)}</strong>: ${message.message}</span></li>`);
+    return messages.map(message => {
+
+        let author = findAuthorById(authors,message.authorId);
+
+        return `<li><span class='message'><strong>${author.name} (${author.roleId})</strong>: ${message.message}</span></li>`
+    });
+}
+
+function findRoleById(roles:IRole, roleId:number){
+    
 }
 
 export function addMessage(messages:IMessage[], message:string, id:number, authorId:number) {
