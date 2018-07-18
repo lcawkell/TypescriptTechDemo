@@ -1,10 +1,97 @@
-<div id="Chatroom">
-    <div id="ChatroomTitle">My Chatroom</div>
+<style>
 
+#Chatroom {
+    border-left: 1px solid #bbb;
+    border-right: 1px solid #bbb;
+    border-top: 1px solid #bbb;
+    width: 1000px;
+    height: 500px;
+    overflow:hidden;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#ChatroomTitle {
+    text-align: center;
+    height: 10%;
+}
+
+#ChatroomMessages {
+    height: 80%;
+}
+
+#ChatroomPrompt {
+    height: 6%;
+    width: 1000px;
+    outline: 1px solid #bbb;
+    margin: 1px;
+}
+
+#ChatroomPromptInput {
+    border: 0;
+    width: 92%;
+    height: 100%;
+    padding: 15px;
+    font-size: 18px;
+    display: inline-block;
+    outline: none;
+    margin-right: 15px;
+}
+
+#ChatroomPromptInput:focus {
+    box-shadow: 0px 3px 0px #bfb;
+}
+
+#btnSend {
+    padding: 10px;
+    background: #0EC3E4;
+    color: white;
+    border: 1px solid #0EC3E4;
+    border-radius: 5px;
+    cursor:pointer;
+    outline: none;
+}
+
+#btnSend:hover {
+    background: white;
+    border: 1px solid #0EC3E4;
+    color: #0EC3E4;
+}
+
+#Messages {
+    list-style: none;
+    padding-left: 0px;
+}
+
+#Messages li {
+    padding: 10px;
+}
+
+#Messages li .message {
+    padding: 10px;
+}
+
+#Messages li:hover .message {
+    background: #eee;
+}
+
+</style>
+
+<div id="Chatroom">
+    <div id="ChatroomTitle"><h2>My Chatroom</h2></div>
+    <div id="ChatroomMessages">
+        <ul id="Messages">
+
+        </ul>
+    </div>
+</div>
+<div id="ChatroomPrompt">
+        <input id="ChatroomPromptInput">
+        <button id="btnSend">Send</button>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
 <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 
-<script src="SpaceManagement.js"></script>
+<script src="Chatroom.js"></script>
